@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>STOP WATCH</title>
+    <style>
+        body{
+            background-color: black;
+        }
+        #header{
+            height: 300px;
+            width: 1200px;
+            margin: 100px auto;
+            /* background-color: white; */
+        }
+        .a{
+            height: 250px;
+            width: 250px;
+            float: left;
+            border: 15px solid yellow;
+            box-sizing: border-box;
+            margin: 25px;
+            box-shadow: 0px 0px 25px 3px yellow inset;
+            border-radius: 10px;
+            font-size: 100px;
+            text-align: center;
+            color: yellow;
+            padding-top: 25px;
+            
+        }
+        p{
+            font-size: 25px;
+        }
+        #b1{
+            width: 150px;
+            height: 80px;
+            border: 10px solid silver;
+            box-shadow: 0px 0px 15px 3px yellow inset;
+        }
+        @media (max-width:400px) {
+            .a{
+            height: 80px;
+            width: 80px;
+            float: left;
+            border: 5px solid yellow;
+            box-sizing: border-box;
+            box-shadow: 0px 0px 8px 2px yellow inset;
+            border-radius: 2px;
+            text-align: center;
+            
+        }
+           
+            
+            
+        }
+        @media (max-width:800px) {
+            #header{
+            min-height: 150px;
+            width: 200px;
+            }
+            .a{
+            height: 200px;
+            width: 200px;
+            float: left;
+            border: 15px solid yellow;
+            box-sizing: border-box;
+            box-shadow: 0px 0px 12px 3px yellow inset;
+            border-radius: 10px;
+            font-size: 80px;
+            text-align: center;
+            color: yellow;
+            
+        }
+            p{
+            font-size: 15px;
+        }
+            #b1{
+            width: 150px;
+            height: 80px;
+            border: 10px solid silver;
+            box-shadow: 0px 0px 15px 3px yellow inset;
+        }
+            
+        }
+    </style>
+</head>
+<body>
+    <div id="header">
+    <div class="a">
+        <b id="h">00</b>
+        <p>HOURS</p>
+    </div>
+    <div class="a">
+        <b id="m" >00</b>
+        <p>MINUTES</p>
+    </div>
+    <div class="a">
+        <b id="s" >00</b>
+        <p>SECONDS</p>
+    </div>
+    <div class="a">
+        <b id="ms" >00</b>
+        <p>ML SECONDS</p>
+    </div>
+</div>
+<center>
+    <input id="b1" type="button" onclick="demo1(this)" value="START"/>
+    
+</center>
+<script>
+    var h=0
+    var m=0
+    var s=0
+    var ms=0
+    function demo(){
+        var hh=document.querySelector("#h")
+        var mm=document.querySelector("#m")
+        var ss=document.querySelector("#s")
+        var mls=document.querySelector("#ms")
+        ms++
+        if(ms==1000)
+        {
+            ms=0
+            s++;
+            if(s==60){
+                s=0
+                m++;
+                if(m==60){
+                    m=0
+                    h++;
+                }
+            }
+        }
+        if(h<10)
+        hh.innerText="0"+h
+        else
+        hh.innerText=h
+        
+        if(m<10)
+        mm.innerText="0"+m
+        else
+        mm.innerText=m
+
+        if(s<10)
+        ss.innerText="0"+s
+        else
+        ss.innerText=s
+
+        if(ms<100)
+        mls.innerText="0"+ms
+        else
+        mls.innerText=ms
+    }
+    // window.setInterval(demo,1)
+
+    function demo1(x){
+        if(x.value=="START"){
+            x.value="STOP"
+            x.style.background="green"
+            x.style.color="white"
+            x.style.padding="10px"
+            a=setInterval(demo,1)
+        }
+        else{
+            x.value="START"
+            x.style.background="red"
+            x.style.color="white"
+            x.style.padding="10px"
+            clearInterval(a)
+
+            
+        }
+
+    }
+</script>
+</body>
+</html>
